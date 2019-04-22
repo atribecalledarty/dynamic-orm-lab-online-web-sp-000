@@ -38,7 +38,11 @@ class InteractiveRecord
     #I need "'Bob', 9"
     values = []
     self.class.column_names.each do |column_name|
-      values << "'#{send(column_name)}'" unless send(column_name).nil? #control for id value which will be nil
+      if send(column_name).is_a? String
+        values << "'#{send(column_name)}'" unless send(column_name).nil? #control for id value which will be nil
+      else
+        values << send(column_name) unless send(column_name).nil?
+      end
     end
     values.join(', ')
   end
