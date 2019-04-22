@@ -37,11 +37,7 @@ class InteractiveRecord
   def values_for_insert
     #I need "'Bob', 9"
     values = self.class.column_names.map do |column_name|
-      if column_name.is_a? String 
-        "'#{send(column_name)}'" #gets self.column_name adds quote for string for insert
-      else
-        send(column_name) #gets self.column_name
-      end
+      "'#{send(column_name)}'" unless send(col_name).nil? #control for id value which will be nil
     end
     
   end
