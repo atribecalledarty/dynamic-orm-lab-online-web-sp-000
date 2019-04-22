@@ -36,8 +36,9 @@ class InteractiveRecord
   
   def values_for_insert
     #I need "'Bob', 9"
-    values = self.class.column_names.map do |column_name|
-      "'#{send(column_name)}'" unless send(column_name).nil? #control for id value which will be nil
+    values = []
+    self.class.column_names.each do |column_name|
+      values << "'#{send(column_name)}'" unless send(column_name).nil? #control for id value which will be nil
     end
     values.join(', ')
   end
