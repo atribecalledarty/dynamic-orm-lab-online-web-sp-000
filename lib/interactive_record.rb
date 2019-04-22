@@ -20,4 +20,12 @@ class InteractiveRecord
       self.send("#{property}=", value)
     end
   end
+  
+  #INSERT INTO students (name, grade)
+  #VALUES ('Bob', '9')
+  def table_name_for_insert
+    self.class.table_name
+  end
+  
+  def 
 end
