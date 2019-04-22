@@ -38,9 +38,9 @@ class InteractiveRecord
     #I need "'Bob', 9"
     self.class.column_names.map do |column_name|
       if column_name.is_a? String 
-        send("'#{column_name}'") #gets self.column_name adds quote for string for insert
+        "'#{send(column_name)}'" #gets self.column_name adds quote for string for insert
       else
-        send("#{column_name}") #gets self.column_name
+        send(column_name) #gets self.column_name
       end
     end.compact
     
