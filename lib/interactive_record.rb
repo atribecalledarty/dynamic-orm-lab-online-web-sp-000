@@ -14,4 +14,10 @@ class InteractiveRecord
       column_info["name"]
     end
   end
+  
+  def initialize(options={})
+    options.each do |property, value|
+      self.send("#{property}=", value)
+    end
+  end
 end
