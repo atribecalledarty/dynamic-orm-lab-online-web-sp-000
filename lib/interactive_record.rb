@@ -28,8 +28,16 @@ class InteractiveRecord
   end
   
   def col_names_for_insert
-    self.class.column_names.join(', ')
+    self.class.column_names.delete_if {|col| col == "id"}.join(', ')
+    #also delete 'id'
     #=>['name', 'grade'] => 'name, grade'
     #i need 'name, grade'
+  end
+  
+  def values_for_insert
+    #I need "'Bob', 9"
+    self.class.column_names.map do |column_name|
+      send("#{column_name}")
+    end
   end
 end
