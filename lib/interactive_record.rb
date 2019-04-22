@@ -39,6 +39,6 @@ class InteractiveRecord
     values = self.class.column_names.map do |column_name|
       "'#{send(column_name)}'" unless send(column_name).nil? #control for id value which will be nil
     end
-    
+    values.join(', ')
   end
 end
