@@ -47,5 +47,7 @@ class InteractiveRecord
     values.join(', ')
   end
   
-  def 
+  def save
+    
+  end
 end
