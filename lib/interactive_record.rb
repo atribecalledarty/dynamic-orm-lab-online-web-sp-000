@@ -27,5 +27,9 @@ class InteractiveRecord
     self.class.table_name
   end
   
-  def 
+  def col_names_for_insert
+    self.class.column_names.join(', ')
+    #=>['name', 'grade'] => 'name, grade'
+    #i need 'name, grade'
+  end
 end
